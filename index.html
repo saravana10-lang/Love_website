@@ -5,94 +5,96 @@
 <title>For My Pondatti ❤️</title>
 
 <style>
-body {
+body{
   font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  text-align: center;
-  padding: 20px;
+  background:#000;
+  text-align:center;
+  padding:20px;
 }
 
-.box {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  max-width: 420px;
-  margin: auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+/* COMMON BOX */
+.box{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  max-width:420px;
+  margin:auto;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
-.romantic-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-  margin: 5px;
-  object-fit: cover;
+/* LOGIN ROMANTIC BACKGROUND */
+#loginPage{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(-45deg,#ff5f9e,#ffc3a0,#ff9a9e,#fad0c4);
+  background-size:400% 400%;
+  animation:gradientBG 8s ease infinite;
 }
 
-.question {
-  font-weight: bold;
+@keyframes gradientBG{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-input {
-  padding: 8px;
-  width: 80%;
-  border-radius: 5px;
-  border: 1px solid gray;
+/* FLOATING HEARTS */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp 6s linear infinite;
+  opacity:0.8;
 }
 
-button {
-  padding: 10px 20px;
-  background: hotpink;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1)}
+  100%{transform:translateY(-600px) scale(1.5);opacity:0}
 }
 
-#message, #memoryMsg {
-  margin-top: 10px;
-  font-weight: bold;
+/* INPUT & BUTTON */
+input,textarea{
+  padding:8px;
+  width:80%;
+  border-radius:5px;
+  border:1px solid gray;
 }
 
-#nextPage, #memoryQuestion, #memoryImage {
-  display: none;
+button{
+  padding:10px 20px;
+  background:hotpink;
+  border:none;
+  border-radius:6px;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.folder {
-  border: 2px dashed hotpink;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-  cursor: pointer;
+.folder{
+  border:2px dashed hotpink;
+  padding:15px;
+  margin:10px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-/* Countdown */
-.countdown-box {
-  border: 2px solid hotpink;
-  border-radius: 12px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background: #fff0f5;
-}
+.hidden{display:none}
 
-.days-left {
-  font-size: 18px;
-  font-weight: bold;
-  color: #d63384;
+/* COUNTDOWN */
+.countdown-box{
+  border:2px solid hotpink;
+  border-radius:12px;
+  padding:15px;
+  background:#fff0f5;
 }
-
-.timer {
-  font-size: 22px;
-  margin-top: 8px;
-  font-weight: bold;
-  color: #ff1493;
+.days-left{
+  font-size:18px;
+  font-weight:bold;
+  color:#d63384;
 }
-
-.memory-img {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 15px;
+.timer{
+  font-size:22px;
+  font-weight:bold;
+  color:#ff1493;
 }
 </style>
 </head>
@@ -101,14 +103,24 @@ button {
 
 <!-- LOGIN PAGE -->
 <div class="box" id="loginPage">
-  <h2>😍💕 Ennnn Darlinggg Thangooo Cuteeeyyy 😘💖</h2>
 
-  <img src="WhatsApp Image 2026-01-07 at 11.02.14.jpeg" width="150px">
+  <!-- FLOATING HEARTS -->
+  <span class="heart" style="left:10%;animation-delay:0s">❤️</span>
+  <span class="heart" style="left:30%;animation-delay:2s">💖</span>
+  <span class="heart" style="left:50%;animation-delay:1s">💕</span>
+  <span class="heart" style="left:70%;animation-delay:3s">💘</span>
+  <span class="heart" style="left:90%;animation-delay:4s">❤️</span>
 
-  <p class="question">
-    The very first picture of yours that I captured — in that picture, you were about to drink a cold drink.  
+  <h2>😍💕 Ennn Darlinggg Thangooo 😘💖</h2>
+
+  <!-- UPLOAD THIS IMAGE TO GITHUB -->
+  <img src="WhatsApp Image 2026-01-07 at 11.02.14.jpeg" width="150">
+
+  <p><b>
+    The very first picture of yours I captured —  
+    you were about to drink a cold drink.  
     Which cold drink was that?
-  </p>
+  </b></p>
 
   <input type="text" id="answer" placeholder="Type your answer...">
   <br><br>
@@ -117,9 +129,8 @@ button {
   <p id="message"></p>
 </div>
 
-
 <!-- NEXT PAGE -->
-<div class="box" id="nextPage">
+<div class="box hidden" id="nextPage">
   <h2>Our Love Countdown 💕</h2>
 
   <div class="countdown-box">
@@ -127,118 +138,100 @@ button {
     <div class="timer" id="timer"></div>
   </div>
 
-  <div class="folder" onclick="openMemoryQuestion()">
-    📁 Memories
-  </div>
-
-  <div class="folder">
-    📁 How Was My Day (Coming Soon 💌)
-  </div>
+  <div class="folder" onclick="openMemoryQuestion()">📁 Memories</div>
+  <div class="folder">📁 How Was My Day (Coming Soon 💌)</div>
 </div>
 
-
 <!-- MEMORY QUESTION -->
-<div class="box" id="memoryQuestion">
+<div class="box hidden" id="memoryQuestion">
   <h2>Memory Check 😘</h2>
 
-  <p class="question">
-    When was our first bike ride? <br>
-    (Format: DD-MM-YYYY)
-  </p>
+  <p><b>When was our first bike ride?</b><br>(DD-MM-YYYY)</p>
 
-  <input type="text" id="bikeDate" placeholder="Type Your answer Thangooooooomeyyyyyyy.......">
+  <input type="text" id="bikeDate" placeholder="Type here Thangoooo 💕">
   <br><br>
   <button onclick="checkMemoryDate()">Check</button>
 
   <p id="memoryMsg"></p>
 </div>
 
-
 <!-- MEMORY IMAGE -->
-<div class="box" id="memoryImage">
+<div class="box hidden" id="memoryImage">
   <h2>Our Sweet Memory 💞</h2>
-  <p style="color:hotpink;font-weight:bold;">Ennnnnnnnn Thangooooooooo 😘💕💞</p>
+  <p style="color:hotpink;font-weight:bold">
+    Ennnnnnnnn Thangooooooooo 😘💕
+  </p>
 
-  <!-- 🔥 PUT YOUR IMAGE LINK HERE -->
-  <img src="02-11-25.jpeg" width="150px">
+  <!-- UPLOAD THIS IMAGE TO GITHUB -->
+  <img src="02-11-25.jpeg" width="200">
 </div>
-
 
 <script>
 /* LOGIN QUESTION */
-function checkAnswer() {
-  const answer = document.getElementById("answer").value.trim().toLowerCase();
-  const message = document.getElementById("message");
+function checkAnswer(){
+  const ans=document.getElementById("answer").value.toLowerCase();
+  const msg=document.getElementById("message");
 
-  if (answer === "fanta") {
-    message.style.color = "green";
-    message.innerText = "Congrats Ennnnnnnnn Azhakkkiiiiiiiiiiii Pondattiiiiiiiiii ❤️";
-
-    setTimeout(() => {
-      document.getElementById("loginPage").style.display = "none";
-      document.getElementById("nextPage").style.display = "block";
+  if(ans==="fanta"){
+    msg.style.color="green";
+    msg.innerText="Congrats Ennnnnnnnn Azhakkkiiiiiiiiiiii Pondattiiiiiiiiii ❤️";
+    setTimeout(()=>{
+      loginPage.classList.add("hidden");
+      nextPage.classList.remove("hidden");
       startCountdown();
-    }, 2000);
-  } else {
-    message.style.color = "red";
-    message.innerText = "Thappu pondattiii… innum konjooo yossiii maaaaa 😄";
+    },2000);
+  }else{
+    msg.style.color="red";
+    msg.innerText="Thappu pondattiii… innum konjooo yossiii maaaaa 😄";
   }
 }
 
 /* COUNTDOWN */
-const meetDate = new Date("2026-01-20T00:00:00"); // CHANGE MEETING DATE
+const meetDate=new Date("2026-01-20T00:00:00");
 
-function startCountdown() {
+function startCountdown(){
   updateCountdown();
-  setInterval(updateCountdown, 1000);
+  setInterval(updateCountdown,1000);
 }
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = meetDate - now;
+function updateCountdown(){
+  const now=new Date().getTime();
+  const d=meetDate-now;
 
-  if (distance < 0) {
-    document.getElementById("daysLeftText").innerText = "Finally together ❤️";
-    document.getElementById("timer").innerText = "";
+  if(d<0){
+    daysLeftText.innerText="Finally together ❤️";
+    timer.innerText="";
     return;
   }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const days=Math.floor(d/(1000*60*60*24));
+  const h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((d%(1000*60*60))/(1000*60));
+  const s=Math.floor((d%(1000*60))/1000);
 
-  document.getElementById("daysLeftText").innerText =
-    "Only " + days + " days left to meet my pondatti ❤️";
-
-  document.getElementById("timer").innerText =
-    days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s";
+  daysLeftText.innerText="Only "+days+" days left to meet my pondatti ❤️";
+  timer.innerText=`${days}d : ${h}h : ${m}m : ${s}s`;
 }
 
-/* MEMORY QUESTION */
-function openMemoryQuestion() {
-  document.getElementById("nextPage").style.display = "none";
-  document.getElementById("memoryQuestion").style.display = "block";
+/* MEMORY FLOW */
+function openMemoryQuestion(){
+  nextPage.classList.add("hidden");
+  memoryQuestion.classList.remove("hidden");
 }
 
-/* 🔥 CHANGE THIS TO YOUR REAL FIRST BIKE RIDE DATE */
-const correctDate = "02-11-2025"; // DD-MM-YYYY
+const correctDate="02-11-2025";
 
-function checkMemoryDate() {
-  const userDate = document.getElementById("bikeDate").value.trim();
-  const msg = document.getElementById("memoryMsg");
-
-  if (userDate === correctDate) {
-    msg.style.color = "green";
-    msg.innerText = "Ennnnnnnnn Thangooooooooo 😘💕💞";
-
-    setTimeout(() => {
-      document.getElementById("memoryQuestion").style.display = "none";
-      document.getElementById("memoryImage").style.display = "block";
-    }, 1500);
-  } else {
-    msg.style.color = "red";
-    msg.innerText = "Thappuuuu Thangoooooo 🥺💕";
+function checkMemoryDate(){
+  if(bikeDate.value.trim()===correctDate){
+    memoryMsg.style.color="green";
+    memoryMsg.innerText="Ennnnnnnnn Thangooooooooo 😘💕";
+    setTimeout(()=>{
+      memoryQuestion.classList.add("hidden");
+      memoryImage.classList.remove("hidden");
+    },1500);
+  }else{
+    memoryMsg.style.color="red";
+    memoryMsg.innerText="Thappuuuu Thangoooooo 🥺💕";
   }
 }
 </script>
