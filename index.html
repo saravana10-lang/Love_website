@@ -6,16 +6,14 @@
 <title>For My Pondatti ❤️</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  font-family: Arial, sans-serif;
+  margin:0;
+  padding:10px;
+  font-family:Arial,sans-serif;
   background:#000;
   text-align:center;
-  padding:10px;
-  margin:0;
 }
 
 /* COMMON BOX */
@@ -29,7 +27,9 @@ body{
   box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
-/* LOGIN ROMANTIC BACKGROUND */
+.hidden{display:none}
+
+/* LOGIN BG */
 #loginPage{
   position:relative;
   overflow:hidden;
@@ -44,40 +44,35 @@ body{
   100%{background-position:0% 50%}
 }
 
-/* FLOATING HEARTS */
+/* HEART FLOAT */
 .heart{
   position:absolute;
   bottom:-20px;
-  font-size:16px;
+  font-size:18px;
   animation:floatUp 6s linear infinite;
-  opacity:0.8;
 }
 
 @keyframes floatUp{
-  0%{transform:translateY(0) scale(1)}
-  100%{transform:translateY(-600px) scale(1.5);opacity:0}
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-600px);opacity:0}
 }
 
-/* INPUT & BUTTON */
 input,textarea{
-  padding:10px;
   width:100%;
-  max-width:100%;
+  padding:10px;
   border-radius:8px;
-  border:1px solid gray;
+  border:1px solid #999;
   font-size:16px;
-  margin-top:8px;
 }
 
 button{
-  padding:12px;
   width:100%;
+  padding:12px;
   background:hotpink;
+  color:white;
   border:none;
   border-radius:10px;
-  color:white;
   font-size:17px;
-  cursor:pointer;
   margin-top:12px;
 }
 
@@ -86,170 +81,140 @@ button{
   padding:15px;
   margin:12px 0;
   border-radius:12px;
-  cursor:pointer;
   font-size:18px;
-}
-
-.hidden{display:none}
-
-/* COUNTDOWN */
-.countdown-box{
-  border:2px solid hotpink;
-  border-radius:14px;
-  padding:15px;
-  background:#fff0f5;
-}
-.days-left{
-  font-size:16px;
-  font-weight:bold;
-  color:#d63384;
-}
-.timer{
-  font-size:20px;
-  font-weight:bold;
-  color:#ff1493;
-  margin-top:6px;
+  cursor:pointer;
 }
 
 img{
   max-width:100%;
-  height:auto;
   border-radius:12px;
   margin-top:10px;
+}
+
+/* MUSIC HEART NOTES */
+.music-box{
+  background:#fff0f5;
+  border:2px solid hotpink;
+  border-radius:14px;
+  padding:15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 <div class="box" id="loginPage">
+  <span class="heart" style="left:10%">❤️</span>
+  <span class="heart" style="left:30%">💖</span>
+  <span class="heart" style="left:50%">💕</span>
+  <span class="heart" style="left:70%">💘</span>
 
-  <!-- FLOATING HEARTS -->
-  <span class="heart" style="left:10%;animation-delay:0s">❤️</span>
-  <span class="heart" style="left:30%;animation-delay:2s">💖</span>
-  <span class="heart" style="left:50%;animation-delay:1s">💕</span>
-  <span class="heart" style="left:70%;animation-delay:3s">💘</span>
-  <span class="heart" style="left:90%;animation-delay:4s">❤️</span>
+  <h2>Ennn Darlinggg Thangooo 😘</h2>
 
-  <h2>😍💕 Ennn Darlinggg Thangooo 😘💖</h2>
-
-  <!-- UPLOAD IMAGE TO GITHUB -->
   <img src="WhatsApp Image 2026-01-07 at 11.02.14.jpeg">
 
   <p><b>
-    The very first picture of yours I captured —  
+    The very first picture I captured of you —  
     you were about to drink a cold drink.  
-    Which cold drink was that?
+    Which one?
   </b></p>
 
-  <input type="text" id="answer" placeholder="Type your answer...">
+  <input type="text" id="answer" placeholder="Type here...">
   <button onclick="checkAnswer()">Submit</button>
-
   <p id="message"></p>
 </div>
 
-<!-- NEXT PAGE -->
+<!-- MAIN PAGE -->
 <div class="box hidden" id="nextPage">
-  <h2>Our Love Countdown 💕</h2>
-
-  <div class="countdown-box">
-    <div class="days-left" id="daysLeftText"></div>
-    <div class="timer" id="timer"></div>
-  </div>
+  <h2>My Heart Belongs To You ❤️</h2>
 
   <div class="folder" onclick="openMemoryQuestion()">📁 Memories</div>
-  <div class="folder">📁 How Was My Day (Coming Soon 💌)</div>
+  <div class="folder">📁 How Was My Day (Soon 💌)</div>
+  <div class="folder" onclick="openHeartNotes()">💖 Heart Notes</div>
 </div>
 
 <!-- MEMORY QUESTION -->
 <div class="box hidden" id="memoryQuestion">
   <h2>Memory Check 😘</h2>
+  <p>When was our first bike ride?<br><b>(DD-MM-YYYY)</b></p>
 
-  <p><b>When was our first bike ride?</b><br>(DD-MM-YYYY)</p>
-
-  <input type="text" id="bikeDate" placeholder="Type here Thangoooo 💕">
+  <input type="text" id="bikeDate" placeholder="Type date...">
   <button onclick="checkMemoryDate()">Check</button>
-
   <p id="memoryMsg"></p>
 </div>
 
 <!-- MEMORY IMAGE -->
 <div class="box hidden" id="memoryImage">
   <h2>Our Sweet Memory 💞</h2>
-  <p style="color:hotpink;font-weight:bold">
-    Ennnnnnnnn Thangooooooooo 😘💕
-  </p>
-
   <img src="02-11-25.jpeg">
+</div>
+
+<!-- HEART NOTES -->
+<div class="box hidden" id="heartNotes">
+  <h2>💖 Heart Notes 💖</h2>
+
+  <div class="music-box">
+    <p style="color:hotpink;font-weight:bold">
+      This song is playing only for you, my pondatti ❤️  
+      Whenever you miss me… just open this 💕
+    </p>
+
+    <button onclick="playMusic()">▶ Play My Love Song</button>
+    <button onclick="pauseMusic()">⏸ Pause</button>
+
+    <audio id="loveSong">
+      <source src="Ovvundraai-Thirudugiraai-MassTamilan.dev.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 </div>
 
 <script>
 function checkAnswer(){
-  const ans=document.getElementById("answer").value.toLowerCase();
-  const msg=document.getElementById("message");
-
-  if(ans==="fanta"){
-    msg.style.color="green";
-    msg.innerText="Congrats Ennnnnnnnn Azhakkkiiiiiiiiiiii Pondattiiiiiiiiii ❤️";
+  const a=answer.value.toLowerCase();
+  if(a==="fanta"){
+    message.style.color="green";
+    message.innerText="Congrats Ennnnnnnnn Azhakkkiiiiiiiiiiii Pondattiiiiiiiiii ❤️";
     setTimeout(()=>{
       loginPage.classList.add("hidden");
       nextPage.classList.remove("hidden");
-      startCountdown();
-    },1800);
+    },1500);
   }else{
-    msg.style.color="red";
-    msg.innerText="Thappu pondattiii… innum konjooo yossiii maaaaa 😄";
+    message.style.color="red";
+    message.innerText="Thappu pondattiii… innum konjooo yossiii maaaaa 😄";
   }
 }
 
-/* COUNTDOWN */
-const meetDate=new Date("2026-01-20T00:00:00");
-
-function startCountdown(){
-  updateCountdown();
-  setInterval(updateCountdown,1000);
-}
-
-function updateCountdown(){
-  const now=new Date().getTime();
-  const d=meetDate-now;
-
-  if(d<0){
-    daysLeftText.innerText="Finally together ❤️";
-    timer.innerText="";
-    return;
-  }
-
-  const days=Math.floor(d/(1000*60*60*24));
-  const h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((d%(1000*60*60))/(1000*60));
-  const s=Math.floor((d%(1000*60))/1000);
-
-  daysLeftText.innerText="Only "+days+" days left to meet my pondatti ❤️";
-  timer.innerText=`${days}d : ${h}h : ${m}m : ${s}s`;
-}
-
-/* MEMORY FLOW */
 function openMemoryQuestion(){
   nextPage.classList.add("hidden");
   memoryQuestion.classList.remove("hidden");
 }
 
-const correctDate="02-11-2025";
-
 function checkMemoryDate(){
-  if(bikeDate.value.trim()===correctDate){
+  if(bikeDate.value==="02-11-2025"){
     memoryMsg.style.color="green";
-    memoryMsg.innerText="Ennnnnnnnn Thangooooooooo 😘💕";
+    memoryMsg.innerText="Ennnnnnnnn Thangooooooooo 😘";
     setTimeout(()=>{
       memoryQuestion.classList.add("hidden");
       memoryImage.classList.remove("hidden");
     },1500);
   }else{
     memoryMsg.style.color="red";
-    memoryMsg.innerText="Thappuuuu Thangoooooo 🥺💕";
+    memoryMsg.innerText="Thappuuuu Thangoooooo 🥺";
   }
+}
+
+function openHeartNotes(){
+  nextPage.classList.add("hidden");
+  heartNotes.classList.remove("hidden");
+}
+
+function playMusic(){
+  document.getElementById("loveSong").play();
+}
+
+function pauseMusic(){
+  document.getElementById("loveSong").pause();
 }
 </script>
 
