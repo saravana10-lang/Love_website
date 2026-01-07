@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Pondatti ❤️</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
   font-family: Arial, sans-serif;
   background:#000;
   text-align:center;
-  padding:20px;
+  padding:10px;
+  margin:0;
 }
 
 /* COMMON BOX */
 .box{
   background:white;
-  padding:25px;
-  border-radius:15px;
-  max-width:420px;
-  margin:auto;
+  padding:20px;
+  border-radius:16px;
+  max-width:380px;
+  width:100%;
+  margin:20px auto;
   box-shadow:0 0 15px rgba(0,0,0,0.3);
 }
 
@@ -41,7 +48,7 @@ body{
 .heart{
   position:absolute;
   bottom:-20px;
-  font-size:18px;
+  font-size:16px;
   animation:floatUp 6s linear infinite;
   opacity:0.8;
 }
@@ -53,28 +60,34 @@ body{
 
 /* INPUT & BUTTON */
 input,textarea{
-  padding:8px;
-  width:80%;
-  border-radius:5px;
+  padding:10px;
+  width:100%;
+  max-width:100%;
+  border-radius:8px;
   border:1px solid gray;
+  font-size:16px;
+  margin-top:8px;
 }
 
 button{
-  padding:10px 20px;
+  padding:12px;
+  width:100%;
   background:hotpink;
   border:none;
-  border-radius:6px;
+  border-radius:10px;
   color:white;
-  font-size:16px;
+  font-size:17px;
   cursor:pointer;
+  margin-top:12px;
 }
 
 .folder{
   border:2px dashed hotpink;
   padding:15px;
-  margin:10px;
-  border-radius:10px;
+  margin:12px 0;
+  border-radius:12px;
   cursor:pointer;
+  font-size:18px;
 }
 
 .hidden{display:none}
@@ -82,19 +95,27 @@ button{
 /* COUNTDOWN */
 .countdown-box{
   border:2px solid hotpink;
-  border-radius:12px;
+  border-radius:14px;
   padding:15px;
   background:#fff0f5;
 }
 .days-left{
-  font-size:18px;
+  font-size:16px;
   font-weight:bold;
   color:#d63384;
 }
 .timer{
-  font-size:22px;
+  font-size:20px;
   font-weight:bold;
   color:#ff1493;
+  margin-top:6px;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+  margin-top:10px;
 }
 </style>
 </head>
@@ -113,8 +134,8 @@ button{
 
   <h2>😍💕 Ennn Darlinggg Thangooo 😘💖</h2>
 
-  <!-- UPLOAD THIS IMAGE TO GITHUB -->
-  <img src="WhatsApp Image 2026-01-07 at 11.02.14.jpeg" width="150">
+  <!-- UPLOAD IMAGE TO GITHUB -->
+  <img src="WhatsApp Image 2026-01-07 at 11.02.14.jpeg">
 
   <p><b>
     The very first picture of yours I captured —  
@@ -123,7 +144,6 @@ button{
   </b></p>
 
   <input type="text" id="answer" placeholder="Type your answer...">
-  <br><br>
   <button onclick="checkAnswer()">Submit</button>
 
   <p id="message"></p>
@@ -149,7 +169,6 @@ button{
   <p><b>When was our first bike ride?</b><br>(DD-MM-YYYY)</p>
 
   <input type="text" id="bikeDate" placeholder="Type here Thangoooo 💕">
-  <br><br>
   <button onclick="checkMemoryDate()">Check</button>
 
   <p id="memoryMsg"></p>
@@ -162,12 +181,10 @@ button{
     Ennnnnnnnn Thangooooooooo 😘💕
   </p>
 
-  <!-- UPLOAD THIS IMAGE TO GITHUB -->
-  <img src="02-11-25.jpeg" width="200">
+  <img src="02-11-25.jpeg">
 </div>
 
 <script>
-/* LOGIN QUESTION */
 function checkAnswer(){
   const ans=document.getElementById("answer").value.toLowerCase();
   const msg=document.getElementById("message");
@@ -179,7 +196,7 @@ function checkAnswer(){
       loginPage.classList.add("hidden");
       nextPage.classList.remove("hidden");
       startCountdown();
-    },2000);
+    },1800);
   }else{
     msg.style.color="red";
     msg.innerText="Thappu pondattiii… innum konjooo yossiii maaaaa 😄";
