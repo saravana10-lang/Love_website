@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Pondatti ❤️</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  text-align: center;
+  padding: 20px;
+}
+
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 420px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.romantic-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  margin: 5px;
+  object-fit: cover;
+}
+
+.question {
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+button {
+  padding: 10px 20px;
+  background: hotpink;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#message, #memoryMsg {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#nextPage, #memoryQuestion, #memoryImage {
+  display: none;
+}
+
+.folder {
+  border: 2px dashed hotpink;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Countdown */
+.countdown-box {
+  border: 2px solid hotpink;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #fff0f5;
+}
+
+.days-left {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d63384;
+}
+
+.timer {
+  font-size: 22px;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #ff1493;
+}
+
+.memory-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div class="box" id="loginPage">
+  <h2>😍💕 Ennnn Darlinggg Thangooo Cuteeeyyy 😘💖</h2>
+
+  <img src="WhatsApp Image 2026-01-07 at 11.02.14.jpeg" width="150px">
+
+  <p class="question">
+    The very first picture of yours that I captured — in that picture, you were about to drink a cold drink.  
+    Which cold drink was that?
+  </p>
+
+  <input type="text" id="answer" placeholder="Type your answer...">
+  <br><br>
+  <button onclick="checkAnswer()">Submit</button>
+
+  <p id="message"></p>
+</div>
+
+
+<!-- NEXT PAGE -->
+<div class="box" id="nextPage">
+  <h2>Our Love Countdown 💕</h2>
+
+  <div class="countdown-box">
+    <div class="days-left" id="daysLeftText"></div>
+    <div class="timer" id="timer"></div>
+  </div>
+
+  <div class="folder" onclick="openMemoryQuestion()">
+    📁 Memories
+  </div>
+
+  <div class="folder">
+    📁 How Was My Day (Coming Soon 💌)
+  </div>
+</div>
+
+
+<!-- MEMORY QUESTION -->
+<div class="box" id="memoryQuestion">
+  <h2>Memory Check 😘</h2>
+
+  <p class="question">
+    When was our first bike ride? <br>
+    (Format: DD-MM-YYYY)
+  </p>
+
+  <input type="text" id="bikeDate" placeholder="Type Your answer Thangooooooomeyyyyyyy.......">
+  <br><br>
+  <button onclick="checkMemoryDate()">Check</button>
+
+  <p id="memoryMsg"></p>
+</div>
+
+
+<!-- MEMORY IMAGE -->
+<div class="box" id="memoryImage">
+  <h2>Our Sweet Memory 💞</h2>
+  <p style="color:hotpink;font-weight:bold;">Ennnnnnnnn Thangooooooooo 😘💕💞</p>
+
+  <!-- 🔥 PUT YOUR IMAGE LINK HERE -->
+  <img src="02-11-25.jpeg" width="150px">
+</div>
+
+
+<script>
+/* LOGIN QUESTION */
+function checkAnswer() {
+  const answer = document.getElementById("answer").value.trim().toLowerCase();
+  const message = document.getElementById("message");
+
+  if (answer === "fanta") {
+    message.style.color = "green";
+    message.innerText = "Congrats Ennnnnnnnn Azhakkkiiiiiiiiiiii Pondattiiiiiiiiii ❤️";
+
+    setTimeout(() => {
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("nextPage").style.display = "block";
+      startCountdown();
+    }, 2000);
+  } else {
+    message.style.color = "red";
+    message.innerText = "Thappu pondattiii… innum konjooo yossiii maaaaa 😄";
+  }
+}
+
+/* COUNTDOWN */
+const meetDate = new Date("2026-01-20T00:00:00"); // CHANGE MEETING DATE
+
+function startCountdown() {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = meetDate - now;
+
+  if (distance < 0) {
+    document.getElementById("daysLeftText").innerText = "Finally together ❤️";
+    document.getElementById("timer").innerText = "";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("daysLeftText").innerText =
+    "Only " + days + " days left to meet my pondatti ❤️";
+
+  document.getElementById("timer").innerText =
+    days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s";
+}
+
+/* MEMORY QUESTION */
+function openMemoryQuestion() {
+  document.getElementById("nextPage").style.display = "none";
+  document.getElementById("memoryQuestion").style.display = "block";
+}
+
+/* 🔥 CHANGE THIS TO YOUR REAL FIRST BIKE RIDE DATE */
+const correctDate = "02-11-2025"; // DD-MM-YYYY
+
+function checkMemoryDate() {
+  const userDate = document.getElementById("bikeDate").value.trim();
+  const msg = document.getElementById("memoryMsg");
+
+  if (userDate === correctDate) {
+    msg.style.color = "green";
+    msg.innerText = "Ennnnnnnnn Thangooooooooo 😘💕💞";
+
+    setTimeout(() => {
+      document.getElementById("memoryQuestion").style.display = "none";
+      document.getElementById("memoryImage").style.display = "block";
+    }, 1500);
+  } else {
+    msg.style.color = "red";
+    msg.innerText = "Thappuuuu Thangoooooo 🥺💕";
+  }
+}
+</script>
+
+</body>
+</html>
